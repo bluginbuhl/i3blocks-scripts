@@ -1,0 +1,25 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) notify-send "Memory hogs" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)" ;;
+esac
+
+total_ram=$(free | awk '/^Mem:/ {print $2}')
+
+in_use=$(free | awk '/^Mem:/ {print $3}')
+
+green_limit=$(( $total_ram / 5 ))
+yellow_limit=$(( $total_ram / 2 ))A
+exceptional_limit="1000000"
+
+if [ "$in_use" -lt "$exceptional_limit" ]; then
+        color="#00f0f0"
+elif [ "$in_use" -lt "$green_limit" ]; then
+        color="#009090"
+elif [ "$in_use" -lt "$yellow_limit" ]; then
+        color="#d79921"
+else
+        color="#cc241d"
+fi
+
+printf "<span color='%s'><b>%s</b></span>" "$color" " "

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Checks to see if NordVPN has an active VPN connection
+
+ifinstalled "nordvpn" || exit
+
+case $BLOCK_BUTTON in
+    1) nordvpn c > /dev/null ;;
+    2) nordvpn d > /dev/null ;;
+    3) notify-send "VPN Status" "$(nordvpn status)
+Press <span color='#cc241d'><b>Mouse1</b></span> to connect to the default port
+Press <span color='#cc241d'><b>Middle Mouse</b></span> to disconnect" ;;
+esac
+
+status=$(nordvpn status | grep "Status" | awk '{print $2}')
+
+if [ "$status" == "Connected" ]; then
+    color="#009090"
+    symbol=" "
+elif [ "$status" == "Connecting" ]; then
+    color="#a40f89"
+    symbol=" "
+else
+    color="#cc241d"
+    symbol=" "
+fi
+
+printf "<span color='%s'><b>%s%s</b></span>" "$color" "$symbol"
