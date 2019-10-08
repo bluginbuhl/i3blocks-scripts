@@ -22,4 +22,4 @@ else
         color="#cc241d"
 fi
 
-printf "<span color='%s'><b>%s</b></span>" "$color" " "
+printf "<span color='%s'><b>  %s</b></span>\n" "$color" ""

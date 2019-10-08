@@ -1,12 +1,24 @@
 #!/bin/sh
 
 case $BLOCK_BUTTON in
-	1) notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)" ;;
-	3) notify-send "🖥 CPU module " "\- Shows CPU temperature.
+	1) notify-send "CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)" ;;
+	3) notify-send "CPU module " "\- Shows CPU temperature.
 - Click to show intensive processes.
 - % is of single core." ;;
 esac
 
-core_0_temp=$(sensors | awk '/Core 0/ {print $3}')
+core_0_temp=$(sensors | awk '/Core 0/ {print int($3)}')
+icon_color="#ffffff"
 
-printf " $core_0_temp"
+# TODO: colors not working
+#if [ "$core_0_temp" -ge "80" ]; then
+#    icon_color="#cc241d"
+#elif (( 60 <= "$core_0_temp" <= 79 )); then
+#    icon_color="#dcc30b"
+#elif (( 40 <= "$core_0_temp" <= 59 )); then
+#    icon_color="#008080"
+#else
+#    icon_color="#00f0f0"
+#fi
+
+printf "<span color='%s'><b>  %s</b></span>\n" "$icon_color" "$core_0_temp"

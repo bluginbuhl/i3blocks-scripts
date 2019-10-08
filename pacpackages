@@ -15,4 +15,6 @@ case $BLOCK_BUTTON in
 esac
 
 
-pacman -Qu | grep -v "\[ignored\]" | wc -l | sed -e "s/^0$//g"
+packages_count=$(pacman -Qu | grep -v "\[ignored\]" | wc -l | sed -e "s/^0$//g")
+
+printf " $packages_count"

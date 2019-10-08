@@ -29,5 +29,5 @@ else
     icon_color="#cc241d"
 fi
 
-printf " <span color='%s'><b>%s</b></span>" "$icon_color" "$wifi_icon"
+printf " <span color='%s'><b>%s</b></span>\n" "$icon_color" "$wifi_icon"
 

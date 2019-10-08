@@ -27,6 +27,6 @@ fi
 
 [ -z $warn ] && warn=" "
 
-[ "$status" = "Charging" ] && color="#00f0f0"
+[ "$status" = "Charging" ] && color="#00f0f0" && warn=" "
 
-printf "<span color='%s'><b>%s%s</b></span>" "$color" "$warn" "$capacity"
+printf "<span color='%s'><b>  %s%s</b></span>\n" "$color" "$capacity" "$warn"
