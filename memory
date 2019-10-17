@@ -9,7 +9,7 @@ total_ram=$(free | awk '/^Mem:/ {print $2}')
 in_use=$(free | awk '/^Mem:/ {print $3}')
 
 green_limit=$(( $total_ram / 5 ))
-yellow_limit=$(( $total_ram / 2 ))A
+yellow_limit=$(( $total_ram / 2 ))
 exceptional_limit="1000000"
 
 if [ "$in_use" -lt "$exceptional_limit" ]; then

@@ -14,7 +14,7 @@ essid=$(iwconfig wlp2s0 2> /dev/null | awk -F\" '{print $2}')
 if [ "$wifi_status" == "down" ]; then
     wifi_icon="  "
 elif [ "$wifi_status" == "up" ]; then
-    wifi_icon=" "
+    wifi_icon=" "
 else
     wifi_icon=" "
 fi
