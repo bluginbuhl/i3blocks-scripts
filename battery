@@ -4,14 +4,22 @@
 capacity=$(cat /sys/class/power_supply/"$1"/capacity) || exit
 status=$(cat /sys/class/power_supply/"$1"/status)
 
+case $BLOCK_BUTTON in
+    1) notify-send "Battery Capacity" "$capacity%\nStatus: $status"
+esac
+
 if [ "$capacity" -ge 75 ]; then
 	color="#009090"
+    icon=""
 elif [ "$capacity" -ge 50 ]; then
 	color="#ffffff"
+    icon=""
 elif [ "$capacity" -ge 15 ]; then
 	color="#dcc30b"
+    icon=""
 else
 	color="#be0000"
+    icon=""
 	warn=" ❗"
 fi
 
@@ -19,4 +27,4 @@ fi
 
 [ "$status" = "Charging" ] && color="#00f0f0" && warn=" "
 
-printf "<span color='%s'><b>  %s%s</b></span>\n" "$color" "$capacity" "$warn"
+printf "<span color='%s'><b>  %s%s</b></span>\n" "$color" "$icon" "$warn"
