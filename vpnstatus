@@ -16,13 +16,13 @@ status=$(nordvpn status | grep "Status" | awk '{print $2}')
 
 if [ "$status" == "Connected" ]; then
     color="#00f0f0"
-    symbol=" "
+    symbol=" "
 elif [ "$status" == "Connecting" ]; then
     color="#dcc30b"
-    symbol=" "
+    symbol=" "
 else
     color="#cc241d"
-    symbol=" "
+    symbol=" "
 fi
 
 printf "<span color='%s'><b> %s%s</b></span>\n" "$color" "$symbol"
