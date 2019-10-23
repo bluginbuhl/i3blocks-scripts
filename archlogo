@@ -2,7 +2,7 @@
 
 case $BLOCK_BUTTON in
     1) dmenu_run -fn Monospace-8 ;;
-    3) notify-send -i /home/ben/Pictures/arch_transparent.png "I use Arch, btw..." ;;
+    3) notify-send --urgency=low -i /home/ben/Pictures/arch_transparent.png "I use Arch, btw..." ;;
 esac
 
 color="#008080"
