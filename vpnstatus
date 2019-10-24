@@ -5,12 +5,6 @@
 ifinstalled "nordvpn" || exit
 status=$(nordvpn status | awk '/^Status/ {print $2}')
 
-case $BLOCK_BUTTON in
-    1) nordvpn c > /dev/null && notify-send "VPN" "Attempting to connect to the default VPN..." ;;
-    2) nordvpn d > /dev/null && notify-send "VPN" "Disconnecting" ;;
-    3) notify-send "VPN Status" "$status\n$(ipparser)" ;;
-esac
-
 if [ "$status" == "Connected" ]; then
     color="#00f0f0"
     symbol=" "
@@ -21,5 +15,11 @@ else
     color="#cc241d"
     symbol=" "
 fi
+
+case $BLOCK_BUTTON in
+    1) nordvpn c > /dev/null && notify-send "VPN" "Attempting to connect to the default VPN..." ;;
+    2) nordvpn d > /dev/null && notify-send "VPN" "Disconnecting" ;;
+    3) notify-send "VPN Status" "<span color='$color'><b>$status</b></span>\n$(ipparser)" ;;
+esac
 
 printf "<span color='%s'><b> %s%s</b></span>\n" "$color" "$symbol"
