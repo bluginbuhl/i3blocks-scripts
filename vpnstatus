@@ -3,16 +3,13 @@
 # Checks to see if NordVPN has an active VPN connection
 
 ifinstalled "nordvpn" || exit
+status=$(nordvpn status | awk '/^Status/ {print $2}')
 
 case $BLOCK_BUTTON in
     1) nordvpn c > /dev/null && notify-send "VPN" "Attempting to connect to the default VPN..." ;;
     2) nordvpn d > /dev/null && notify-send "VPN" "Disconnecting" ;;
-    3) notify-send "VPN Status" "$(nordvpn status)
-Press <span color='#cc241d'><b>Mouse1</b></span> to connect to the default port
-Press <span color='#cc241d'><b>Middle Mouse</b></span> to disconnect" ;;
+    3) notify-send "VPN Status" "$status\n$(ipparser)" ;;
 esac
-
-status=$(nordvpn status | grep "Status" | awk '{print $2}')
 
 if [ "$status" == "Connected" ]; then
     color="#00f0f0"
