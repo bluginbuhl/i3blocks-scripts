@@ -19,4 +19,9 @@ fi
 
 [ "$status" = "Charging" ] && color="#00f0f0" && warn=" "
 
+case $BLOCK_BUTTON in
+        1) notify-send "Battery Module" "Current capacity = $capacity" ;;
+        2) $(batgraph) ;;
+esac
+
 printf "<span color='%s'><b>  %s%s</b></span>\n" "$color" "$capacity" "$warn"
