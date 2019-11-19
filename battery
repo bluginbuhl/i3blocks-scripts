@@ -3,6 +3,7 @@
 
 capacity=$(cat /sys/class/power_supply/"$1"/capacity) || exit
 status=$(cat /sys/class/power_supply/"$1"/status)
+remaining=$(acpi | awk '{print $5}')
 
 if [ "$capacity" -ge 75 ]; then
 	color="#009090"
@@ -20,7 +21,7 @@ fi
 [ "$status" = "Charging" ] && color="#00f0f0" && warn=" "
 
 case $BLOCK_BUTTON in
-        1) notify-send "Battery Module" "Current capacity = $capacity" ;;
+        1) notify-send "Battery Module" "Current capacity = $capacity%\nTime remaining = $remaining" ;;
         2) $(batgraph) ;;
 esac
 
