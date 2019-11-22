@@ -7,7 +7,7 @@ remaining=$(acpi | awk '{print $5}')
 
 if [ "$capacity" -ge 75 ]; then
 	color="#009090"
-elif [ "$capacity" -ge 50 ]; then
+elif [ "$capacity" -ge 30 ]; then
 	color="#ffffff"
 elif [ "$capacity" -ge 15 ]; then
 	color="#dcc30b"
