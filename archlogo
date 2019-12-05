@@ -5,7 +5,7 @@ case $BLOCK_BUTTON in
     3) notify-send --urgency=low -i /home/ben/Pictures/arch_transparent.png "I use Arch, btw..." ;;
 esac
 
-color="#008080"
+color="#00f0f0"
 logo=''
 
 printf "<span color='%s'>       </span>\n" "$color"

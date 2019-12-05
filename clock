@@ -11,4 +11,4 @@ case $BLOCK_BUTTON in
 - Middle click opens calcurse if installed" ;;
 esac
 
-printf "%s  ( <span color='#009090'><b>%s</b></span> )  %s\n" "$datestring" "$day" "$clock_time"
+printf "%s  ( <span color='#00f0f0'><b>%s</b></span> )  %s\n" "$datestring" "$day" "$clock_time"
