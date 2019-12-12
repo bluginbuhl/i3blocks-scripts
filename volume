@@ -5,11 +5,11 @@ case $BLOCK_BUTTON in
 	2) pulsemixer --toggle-mute ;;
 	4) pulsemixer --change-volume +5 ;;
 	5) pulsemixer --change-volume -5 ;;
-	3) pgrep -x dunst >/dev/null && notify-send -u low "Volume module" "\- Middle click to mute.
+	3) pgrep -x dunst >/dev/null && notify-send "Volume module" "\- Middle click to mute.
 - Scroll to change."
 esac
 
-[ "$(pulsemixer --get-mute)" = "1" ] && printf "<span color='#666'><b>     </b></span>\n" && exit
+[ "$(pulsemixer --get-mute)" = "1" ] && printf "<span color='#cc241d'><b>     </b></span>\n" && exit
 
 vol=$(pulsemixer --get-volume | awk '{print $1}')
 
