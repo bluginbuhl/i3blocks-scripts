@@ -6,6 +6,5 @@ case $BLOCK_BUTTON in
 esac
 
 color="#00f0f0"
-logo=''
 
-printf "<span color='%s'>       </span>\n" "$color"
+printf "<span color='%s'>\uf323</span>\n" "$color"

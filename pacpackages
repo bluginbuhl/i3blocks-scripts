@@ -14,7 +14,6 @@ case $BLOCK_BUTTON in
 - Middle click to show upgradable packages" ;;
 esac
 
-
 packages_count=$(pacman -Qu | grep -v "\[ignored\]" | wc -l | sed -e "s/^0$//g")
 
-printf " $packages_count"
+printf "<span><b>  $packages_count</b></span>\n"
